@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd1bx6ali6aj8"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_n5tue"]
+[ext_resource type="Texture2D" uid="uid://qyv6n031fpxe" path="res://icon.svg" id="2_bh650"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndojo"]
+
+[node name="BossJamGame" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_n5tue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_ndojo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_bh650")
