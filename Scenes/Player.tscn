@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwevwfecvppnb"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_h2dpb"]
+[ext_resource type="Texture2D" uid="uid://dhafhrtv1feh" path="res://Assets/Tiny Dungeon/Tiles/tile_0087.png" id="2_1sieg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjkgh"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_h2dpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bjkgh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_1sieg")
