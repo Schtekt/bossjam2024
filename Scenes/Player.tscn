@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://t8sso6j3kae" path="res://Assets/Tiny Dungeon/Tiles/tile_0087.png" id="2_1sieg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjkgh"]
+size = Vector2(10, 10)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -13,5 +14,5 @@ script = ExtResource("1_h2dpb")
 shape = SubResource("RectangleShape2D_bjkgh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.25, 1.25)
+scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_1sieg")
