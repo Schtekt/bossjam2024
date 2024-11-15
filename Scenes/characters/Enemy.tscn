@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://w4jqtuxb5cu3"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/enemy.gd" id="1_3rsop"]
+[ext_resource type="Texture2D" uid="uid://c0fag44crqgqb" path="res://Assets/Tiny Dungeon/Tiles/tile_0108.png" id="1_b507n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0noi"]
+size = Vector2(14, 12)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_3rsop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q0noi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b507n")
