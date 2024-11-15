@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dd1bx6ali6aj8"]
 
-[ext_resource type="PackedScene" uid="uid://dwevwfecvppnb" path="res://Scenes/Player.tscn" id="1_i1fv6"]
+[ext_resource type="PackedScene" uid="uid://dwevwfecvppnb" path="res://Scenes/characters/Player.tscn" id="1_i1fv6"]
 
 [node name="BossJamGame" type="Node2D"]
 
