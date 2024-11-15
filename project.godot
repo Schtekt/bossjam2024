@@ -14,3 +14,7 @@ config/name="BossJam2024"
 run/main_scene="res://Scenes/boss_jam_game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
