@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://sn2kuwx3f20w"]
 
 [ext_resource type="PackedScene" uid="uid://dwevwfecvppnb" path="res://Scenes/characters/Player.tscn" id="1_7g2fj"]
-[ext_resource type="Texture2D" uid="uid://2lbadkqtgkhi" path="res://Assets/Roguelike Interior Pack/Tilesheets/roguelikeIndoor_transparent.png" id="1_ibknr"]
+[ext_resource type="Texture2D" uid="uid://jxe6ys43h04m" path="res://Assets/Roguelike Interior Pack/Tilesheets/roguelikeIndoor_transparent.png" id="1_ibknr"]
 [ext_resource type="Script" path="res://Scenes/Levels/tavern.gd" id="1_xtuvi"]
-[ext_resource type="Texture2D" uid="uid://7m3lsu0yyjcm" path="res://Assets/Tiny Town/Tilemap/tilemap_packed.png" id="2_bbvtf"]
-[ext_resource type="Texture2D" uid="uid://mpiy65p4aokf" path="res://Assets/Tiny Dungeon/Tilemap/tilemap_packed.png" id="3_bm0uu"]
+[ext_resource type="Texture2D" uid="uid://5ae7biupogu6" path="res://Assets/Tiny Town/Tilemap/tilemap_packed.png" id="2_bbvtf"]
+[ext_resource type="Texture2D" uid="uid://ftksi5f4wsdp" path="res://Assets/Tiny Dungeon/Tilemap/tilemap_packed.png" id="3_bm0uu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bntci"]
 texture = ExtResource("2_bbvtf")
