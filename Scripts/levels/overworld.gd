@@ -10,6 +10,7 @@ func _spawn_enemy(pos: Vector2) -> void:
 	var vert_or_hor: bool = randi() % 2
 	var reverse_dir = ((randi() % 2) - 0.5) * 2
 	new_enemy.set_direction(Vector2((1 if vert_or_hor else 0) * reverse_dir, (0 if vert_or_hor else 1) * reverse_dir))
+	new_enemy.enemy_dead.connect(_on_enemy_dead)
 	self.add_child(new_enemy)
 
 func _spawn_random_item(pos: Vector2) -> void:
@@ -17,6 +18,11 @@ func _spawn_random_item(pos: Vector2) -> void:
 	new_item.position = pos
 
 	self.add_child(new_item)
+
+func _on_enemy_dead(enemy: Enemy):
+	var enemy_pos = enemy.position
+	enemy.queue_free()
+	_spawn_random_item(enemy_pos)
 
 func _ready() -> void:
 	var spawn_points_node = get_node("Spawn points")

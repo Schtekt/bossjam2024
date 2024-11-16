@@ -5,6 +5,7 @@ class_name Enemy
 const SPEED = 100.0
 
 var dmg = 1.0
+var health = 3
 
 var player_collided_cooldown_timer = 0.2
 var cooldown_timer: Timer
@@ -12,6 +13,7 @@ var may_attack = true
 
 signal player_was_hit()
 signal sword_attack(from: Vector2, damage: int)
+signal enemy_dead(enemy: Enemy)
 
 func set_direction(direction: Vector2) -> void:
 	var normalized_dir = direction.normalized()
@@ -33,7 +35,9 @@ func _collided_with_player() -> void:
 
 func _attacked(from: Vector2, damage: int) -> void:
 	self.set_direction(position - from)
-	print("enemy took damage %d" %damage)
+	health -= damage
+	if health <= 0:
+		enemy_dead.emit(self)
 
 func _timeout() -> void:
 	self.may_attack = true
