@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://5okr7i4d4igl"]
+[gd_scene load_steps=5 format=3 uid="uid://5okr7i4d4igl"]
 
 [ext_resource type="Script" path="res://Scripts/levels/table.gd" id="1_7nqwf"]
 [ext_resource type="TileSet" uid="uid://1yxwc1btb68i" path="res://tilemaps/Tavern.tres" id="1_58tc5"]
+[ext_resource type="PackedScene" uid="uid://dyo4ahof5gwa1" path="res://Scenes/Levels/Tavern/Order_Indicator.tscn" id="3_by68e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfttp"]
 size = Vector2(16, 5)
@@ -17,3 +18,11 @@ shape = SubResource("RectangleShape2D_gfttp")
 position = Vector2(-8, -8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 6, 0, 0, 0)
 tile_set = ExtResource("1_58tc5")
+
+[node name="Order-Indicator" parent="." instance=ExtResource("3_by68e")]
+visible = false
+offset_left = -14.0
+offset_top = -26.0
+offset_right = 42.0
+offset_bottom = 10.0
+scale = Vector2(0.5, 0.5)

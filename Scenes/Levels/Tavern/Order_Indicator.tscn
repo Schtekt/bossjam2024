@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyo4ahof5gwa1"]
+
+[ext_resource type="Texture2D" uid="uid://e0m3oqhypnvb" path="res://Assets/ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0000.png" id="1_ol6ao"]
+[ext_resource type="Script" path="res://Scripts/levels/order_Indicator.gd" id="2_45j0q"]
+
+[node name="Order_Indicator" type="NinePatchRect"]
+offset_left = 1.0
+offset_right = 133.0
+offset_bottom = 61.0
+size_flags_horizontal = 4
+texture = ExtResource("1_ol6ao")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("2_45j0q")
