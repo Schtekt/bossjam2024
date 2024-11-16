@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Tavern
 @export var time_in_a_day: int = 60 * 60 * 24
 
 var CurrentTime: float
