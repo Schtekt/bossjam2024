@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqgmrp6xcejbx"]
+
+[ext_resource type="Texture2D" uid="uid://c3xhffmy7bvar" path="res://Assets/Tiny Dungeon/Tiles/tile_0104.png" id="1_c0g7f"]
+[ext_resource type="Script" path="res://Scripts/Characters/sword.gd" id="1_dftkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q154"]
+size = Vector2(14, 16)
+
+[node name="Sword" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_dftkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1q154")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c0g7f")

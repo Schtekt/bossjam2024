@@ -11,6 +11,7 @@ var cooldown_timer: Timer
 var may_attack = true
 
 signal player_was_hit()
+signal sword_attack(from: Vector2, damage: int)
 
 func set_direction(direction: Vector2) -> void:
 	var normalized_dir = direction.normalized()
@@ -24,10 +25,15 @@ func _ready() -> void:
 	self.add_child(cooldown_timer)
 	cooldown_timer.connect("timeout", self._timeout)
 	player_was_hit.connect(self._collided_with_player)
+	sword_attack.connect(_attacked)
 
 func _collided_with_player() -> void:
 	self.may_attack = false
 	self.cooldown_timer.start(self.player_collided_cooldown_timer)
+
+func _attacked(from: Vector2, damage: int) -> void:
+	self.set_direction(position - from)
+	print("enemy took damage %d" %damage)
 
 func _timeout() -> void:
 	self.may_attack = true
