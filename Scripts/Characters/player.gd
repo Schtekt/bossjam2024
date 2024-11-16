@@ -6,13 +6,16 @@ const SPEED = 200.0
 
 signal enemy_collision(enemy_node: Enemy, damage: float)
 signal item_pickup(item_node: Item_Base)
+signal dish_collide(order_base: Dish_Base)
 
 var backpack: Dictionary
+var held_dish: Dish_Base = null
 
 func _ready():
 	# Food_Type, int
 	enemy_collision.connect(_on_enemy_collision)
 	item_pickup.connect(_on_item_pickup)
+	dish_collide.connect(_on_dish_pickup)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("player_attack"):
@@ -40,3 +43,12 @@ func _on_item_pickup(item_node: Item_Base):
 		self.backpack[item_node.food_type] = 1
 
 	item_node.queue_free()
+
+func _on_dish_pickup(dish_node: Dish_Base) -> void:
+	if held_dish != null:
+		return
+
+	held_dish = dish_node
+	dish_node.call_deferred("reparent", self)
+	var sprite_node: Sprite2D = get_node("Sprite2D")
+	held_dish.position.y -= sprite_node.get_rect().size.y

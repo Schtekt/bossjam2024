@@ -6,6 +6,18 @@ var chairs_at_table = 0
 
 var current_order: Array[Dish_Base.Dish_Type]
 
+signal dish_collide(dish: Dish_Base)
+
+func _attempt_delivery(dish: Dish_Base) -> bool:
+	for order in current_order:
+		if order == dish.dish_type:
+			var order_indicator_node: Order_Indicator = get_node("Order_Indicator")
+			if order_indicator_node.remove_order(dish.dish_type):
+				current_order.erase(order)
+				dish.queue_free()
+			return true
+	return false
+
 func _create_left_chair() -> void:
 	var chair: Chair = chair_scene.instantiate()
 	chair.set_direction(Chair.Chair_Direction.RIGHT)
@@ -24,7 +36,7 @@ func _generate_orders() -> void:
 	for i in range(chairs_at_table):
 		current_order.append(randi() % Dish_Base.Dish_Type.size())
 	
-	var order_indicator_node: Order_Indicator = get_node("Order-Indicator")
+	var order_indicator_node: Order_Indicator = get_node("Order_Indicator")
 	order_indicator_node.visible = true
 	for order in current_order:
 		order_indicator_node.add_order(order)
@@ -44,5 +56,6 @@ func randomize_chairs() -> void:
 			_create_left_chair()
 
 func _ready() -> void:
+	dish_collide.connect(_attempt_delivery)
 	randomize_chairs()
 	_generate_orders()

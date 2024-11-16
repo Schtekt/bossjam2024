@@ -19,7 +19,7 @@ position = Vector2(-8, -8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 6, 0, 0, 0)
 tile_set = ExtResource("1_58tc5")
 
-[node name="Order-Indicator" parent="." instance=ExtResource("3_by68e")]
+[node name="Order_Indicator" parent="." instance=ExtResource("3_by68e")]
 visible = false
 offset_left = -14.0
 offset_top = -26.0

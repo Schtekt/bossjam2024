@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyo4ahof5gwa1"]
 
 [ext_resource type="Texture2D" uid="uid://e0m3oqhypnvb" path="res://Assets/ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0000.png" id="1_ol6ao"]
-[ext_resource type="Script" path="res://Scripts/levels/order_Indicator.gd" id="2_45j0q"]
+[ext_resource type="Script" path="res://Scripts/levels/Order_Indicator.gd" id="2_45j0q"]
 
 [node name="Order_Indicator" type="NinePatchRect"]
 offset_left = 1.0

@@ -38,7 +38,7 @@ script = ExtResource("1_lxfp8")
 [node name="OvenOn" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_viccp")
-frame_progress = 0.935483
+frame_progress = 0.895563
 
 [node name="OvenOff" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_o8cwj")
