@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://t086hxv1spkn"]
+
+[ext_resource type="TileSet" uid="uid://1yxwc1btb68i" path="res://tilemaps/Tavern.tres" id="1_ryq2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw02d"]
+size = Vector2(28, 7)
+
+[node name="Exit" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_aw02d")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 7)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 12, 0, 7, 0, 0, 0, 255, 255, 255, 255, 0, 0, 10, 0, 7, 0, 0, 0)
+tile_set = ExtResource("1_ryq2v")

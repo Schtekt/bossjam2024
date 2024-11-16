@@ -1,18 +1,15 @@
 extends Node2D
 class_name Tavern
-@export var time_in_a_day: int = 60 * 60 * 24
 
-var CurrentTime: float
+signal exit_tavern()
 
-# Called when the node enters the scene tree for the first time.
+func _verify_and_exit_tavern(body: Node2D):
+	if(body == get_node("Player")):
+		exit_tavern.emit()
+
 func _ready() -> void:
-	CurrentTime = 0.0
-	pass # Replace with function body.
+	var exit_node: Area2D = get_node("Exit")
+	exit_node.body_entered.connect(_verify_and_exit_tavern)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	CurrentTime += delta
-	
-	
+func _process(_delta: float) -> void:
 	pass

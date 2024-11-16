@@ -294,6 +294,7 @@ tile_set = SubResource("TileSet_klyc2")
 position = Vector2(88, 56)
 
 [node name="Player" parent="." instance=ExtResource("4_v06aq")]
+position = Vector2(88, 64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://5okr7i4d4igl"]
+
+[ext_resource type="Script" path="res://Scripts/levels/table.gd" id="1_7nqwf"]
+[ext_resource type="TileSet" uid="uid://1yxwc1btb68i" path="res://tilemaps/Tavern.tres" id="1_58tc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfttp"]
+size = Vector2(16, 5)
+
+[node name="Table" type="StaticBody2D"]
+script = ExtResource("1_7nqwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_gfttp")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-8, -8)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 6, 0, 0, 0)
+tile_set = ExtResource("1_58tc5")

@@ -11,6 +11,7 @@ func _set_tavern_active() -> void:
 	_clear_children()
 
 	var tavern: Tavern = tavern_scene.instantiate()
+	tavern.exit_tavern.connect(_set_overworld_active)
 	self.call_deferred("add_child", tavern)
 
 func _set_overworld_active() -> void:
