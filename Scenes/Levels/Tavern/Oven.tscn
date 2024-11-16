@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://gj07no04fe5d"]
+
+[ext_resource type="Texture2D" uid="uid://dymv1ewmgxnej" path="res://Assets/Roguelike RPG Pack/Spritesheet/roguelikeSheet_transparent.png" id="1_byqcq"]
+[ext_resource type="Script" path="res://Scripts/levels/oven.gd" id="1_lxfp8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d083"]
+atlas = ExtResource("1_byqcq")
+region = Rect2(221, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h2nm"]
+atlas = ExtResource("1_byqcq")
+region = Rect2(238, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_viccp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d083")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h2nm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8cwj"]
+atlas = ExtResource("1_byqcq")
+region = Rect2(204, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vghj"]
+size = Vector2(20, 32)
+
+[node name="Oven" type="Area2D"]
+script = ExtResource("1_lxfp8")
+
+[node name="OvenOn" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_viccp")
+frame_progress = 0.935483
+
+[node name="OvenOff" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_o8cwj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_4vghj")
