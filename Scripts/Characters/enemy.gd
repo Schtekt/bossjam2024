@@ -9,19 +9,18 @@ var dmg = 1.0
 var player_collided_cooldown_timer = 0.2
 var cooldown_timer: Timer
 var may_attack = true
-var dir: Vector2
 
 signal player_was_hit()
 
-func set_direction(dir: Vector2) -> void:
-	self.velocity = dir.normalized() * SPEED
+func set_direction(direction: Vector2) -> void:
+	self.velocity = direction.normalized() * SPEED
 
 func _ready() -> void:
 	cooldown_timer = Timer.new()
 	cooldown_timer.autostart = false
 	self.add_child(cooldown_timer)
 	cooldown_timer.connect("timeout", self._timeout)
-	self.connect("player_was_hit", self._collided_with_player)
+	player_was_hit.connect(self._collided_with_player)
 
 func _collided_with_player() -> void:
 	self.may_attack = false
