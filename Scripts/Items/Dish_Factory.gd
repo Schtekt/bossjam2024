@@ -1,11 +1,8 @@
 extends Node
 
+static var cream_scene: PackedScene = preload("res://Scenes/Dishes/Cream.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+static func create_item(type: Dish_Base.Dish_Type) -> Dish_Base:
+	if type == Dish_Base.Dish_Type.CREAM:
+		return cream_scene.instantiate()
+	return null

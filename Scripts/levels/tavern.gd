@@ -6,6 +6,7 @@ signal make_food()
 signal update_inventory(inventory: Dictionary)
 
 var player_by_oven = false
+var dish_factory = preload("res://Scripts/Items/Dish_Factory.gd")
 
 @export var cookbook: Array[Recipe_Base]
 
@@ -26,6 +27,33 @@ func _verify_and_set_player_exit_oven(body: Node2D):
 		var oven_node: Oven = get_node("Oven")
 		player_by_oven = false
 		oven_node.change_oven_state(player_by_oven)
+
+func _spawn_dish(type: Dish_Base.Dish_Type) -> void:
+	var dish: Dish_Base = dish_factory.create_item(type)
+	var player_node: Player = get_node("Player")
+	dish.position = player_node.position
+	call_deferred("add_child", dish)
+
+func _create_dish(recipe: Recipe_Base, inventory: Dictionary) -> void:
+	if inventory.is_empty():
+		return
+
+	# Verify that recipe can be made
+	for entry in recipe.required_input:
+		if inventory[entry.type] < entry.count:
+			return
+
+	# remove required input from inventory
+	for entry in recipe.required_input:
+		inventory[entry.type] -= entry.count
+
+	_spawn_dish(recipe.output)
+
+func _cook_first_possible_dish() -> void:
+	var player_node: Player = get_node("Player")
+	var recipe = get_possible_recipe(cookbook, player_node.backpack)
+	if recipe != null:
+		_create_dish(recipe, player_node.backpack)
 
 func get_possible_recipe(recipe_collection: Array[Recipe_Base], inventory: Dictionary) -> Recipe_Base:
 	if inventory.is_empty() or recipe_collection.is_empty():
@@ -51,8 +79,7 @@ func _ready() -> void:
 	oven_node.body_entered.connect(_verify_and_set_player_by_oven)
 	oven_node.body_exited.connect(_verify_and_set_player_exit_oven)
 
-	var player_node: Player = get_node("Player")
-	make_food.connect(func(): print(get_possible_recipe(cookbook, player_node.backpack)))
+	make_food.connect(_cook_first_possible_dish)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("make_food") and self.player_by_oven:
