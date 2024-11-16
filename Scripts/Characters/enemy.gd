@@ -13,7 +13,10 @@ var may_attack = true
 signal player_was_hit()
 
 func set_direction(direction: Vector2) -> void:
-	self.velocity = direction.normalized() * SPEED
+	var normalized_dir = direction.normalized()
+	var abs_dir = normalized_dir.abs()
+	var hor_dir_dominates = abs_dir.x > abs_dir.y
+	self.velocity = Vector2( normalized_dir.x if hor_dir_dominates else 0, normalized_dir.y if not hor_dir_dominates else 0) * SPEED
 
 func _ready() -> void:
 	cooldown_timer = Timer.new()
