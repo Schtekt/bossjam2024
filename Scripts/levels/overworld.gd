@@ -3,6 +3,7 @@ extends Node2D
 class_name Overworld
 
 signal enter_tavern()
+signal update_inventory(inventory: Dictionary)
 
 const enemy_scene := preload("res://Scenes/characters/Enemy.tscn")
 const item_factory := preload("res://Scripts/Items/Item_Factory.gd")
@@ -29,7 +30,9 @@ func _on_enemy_dead(enemy: Enemy):
 	_spawn_random_item(enemy_pos)
 
 func _verify_and_enter_tavern(body: Node2D):
-	if body == self.get_node("Player"):
+	var player_node: Player = self.get_node("Player")
+	if body == player_node:
+		update_inventory.emit(player_node.backpack)
 		enter_tavern.emit()
 
 func _ready() -> void:

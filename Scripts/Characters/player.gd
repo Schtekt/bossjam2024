@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 200.0
 
 signal enemy_collision(enemy_node: Enemy, damage: float)
