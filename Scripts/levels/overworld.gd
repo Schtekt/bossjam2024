@@ -11,13 +11,13 @@ func _spawn_enemy(pos: Vector2) -> void:
 	var reverse_dir = ((randi() % 2) - 0.5) * 2
 	new_enemy.set_direction(Vector2((1 if vert_or_hor else 0) * reverse_dir, (0 if vert_or_hor else 1) * reverse_dir))
 	new_enemy.enemy_dead.connect(_on_enemy_dead)
-	self.add_child(new_enemy)
+	self.call_deferred("add_child", new_enemy)
 
 func _spawn_random_item(pos: Vector2) -> void:
 	var new_item: Item_Base = item_factory.create_item(randi() % Item_Base.Food_Type.size())
 	new_item.position = pos
 
-	self.add_child(new_item)
+	self.call_deferred("add_child", new_item)
 
 func _on_enemy_dead(enemy: Enemy):
 	var enemy_pos = enemy.position
