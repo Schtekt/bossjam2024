@@ -16,6 +16,7 @@ var held_dish: Dish_Base = null
 var gold: int = 0
 const MAX_HEALTH: int = 10
 var health: int = 10
+var may_attack: bool = true
 
 func _ready():
 	# Food_Type, int
@@ -29,7 +30,7 @@ func _ready():
 	health_bar_node.value = health
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("player_attack"):
+	if Input.is_action_just_pressed("player_attack") and may_attack:
 		var sword_node: Sword = get_node("Sword")
 		var camera_node: Camera2D = get_node("Camera2D")
 		var mouse_rel_pos = camera_node.get_local_mouse_position().normalized()

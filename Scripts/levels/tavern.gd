@@ -87,6 +87,8 @@ func _ready() -> void:
 	oven_node.body_exited.connect(_verify_and_set_player_exit_oven)
 
 	var player_node: Player = get_node("Player")
+	# Tavern is a peaceful place
+	player_node.may_attack = false
 
 	for child in get_children():
 		if child is Table:
