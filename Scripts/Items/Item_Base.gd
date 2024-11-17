@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Item_Base
 
-enum Food_Type {MOLDY_CREAM}
+enum Food_Type {MOLDY_CREAM, DONUT}
 
 var food_type: Food_Type
 
