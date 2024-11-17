@@ -4,8 +4,8 @@ class_name Enemy
 
 const SPEED = 100.0
 
-var dmg = 1.0
-var health = 3
+var dmg: int = 1
+var health: int = 3
 
 var player_collided_cooldown_timer = 0.2
 var cooldown_timer: Timer

@@ -5,6 +5,7 @@ class_name Overworld
 signal enter_tavern()
 signal update_inventory(inventory: Dictionary)
 signal update_gold(gold: int)
+signal update_health(health: int)
 
 const enemy_scene := preload("res://Scenes/characters/Enemy.tscn")
 const item_factory := preload("res://Scripts/Items/Item_Factory.gd")
@@ -35,6 +36,7 @@ func _verify_and_enter_tavern(body: Node2D):
 	if body == player_node:
 		update_inventory.emit(player_node.backpack)
 		update_gold.emit(player_node.gold)
+		update_health.emit(player_node.health)
 		enter_tavern.emit()
 
 func _ready() -> void:

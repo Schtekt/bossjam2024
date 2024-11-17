@@ -4,7 +4,7 @@ class_name Player
 
 const SPEED = 200.0
 
-signal enemy_collision(enemy_node: Enemy, damage: float)
+signal enemy_collision(enemy_node: Enemy, damage: int)
 signal item_pickup(item_node: Item_Base)
 signal dish_collide(order_base: Dish_Base)
 signal receive_reward(reward: int)
@@ -12,6 +12,8 @@ signal receive_reward(reward: int)
 var backpack: Dictionary
 var held_dish: Dish_Base = null
 var gold: int = 0
+const MAX_HEALTH: int = 10
+var health: int = 10
 
 func _ready():
 	# Food_Type, int
@@ -19,6 +21,10 @@ func _ready():
 	item_pickup.connect(_on_item_pickup)
 	dish_collide.connect(_on_dish_pickup)
 	receive_reward.connect(_on_receive_reward)
+
+	var health_bar_node: ProgressBar = get_node("HealthBar")
+	health_bar_node.max_value = MAX_HEALTH
+	health_bar_node.value = health
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("player_attack"):
@@ -35,9 +41,9 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-func _on_enemy_collision(enemy_node: Enemy, damage: float) -> void:
-	print("Collided with enemy that made %f damage" %damage)
+func _on_enemy_collision(enemy_node: Enemy, damage: int) -> void:
 	enemy_node.emit_signal("player_was_hit")
+	_update_health(health - damage)
 
 func _on_item_pickup(item_node: Item_Base):
 	if self.backpack.has(item_node.food_type):
@@ -60,3 +66,8 @@ func _on_dish_pickup(dish_node: Dish_Base) -> void:
 
 func _on_receive_reward(reward: int):
 	gold += reward
+
+func _update_health(new_health: int):
+	health = new_health
+	var health_bar_node: ProgressBar = get_node("HealthBar")
+	health_bar_node.value = health

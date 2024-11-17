@@ -5,6 +5,7 @@ const tavern_scene = preload("res://Scenes/Levels/Tavern/Tavern.tscn")
 
 var latest_inventory: Dictionary = {}
 var latest_gold_count: int = 0
+var latest_health: int = Player.MAX_HEALTH
 
 func _clear_children() -> void:
 	for child in get_children():
@@ -20,6 +21,8 @@ func _set_tavern_active() -> void:
 	var player_node: Player = tavern.get_node("Player")
 	player_node.backpack = latest_inventory
 	player_node.gold = latest_gold_count
+	var health_bar_node: Control = player_node.get_node("HealthBar")
+	health_bar_node.visible = false
 	self.call_deferred("add_child", tavern)
 
 func _set_overworld_active() -> void:
@@ -29,9 +32,11 @@ func _set_overworld_active() -> void:
 	overworld.enter_tavern.connect(_set_tavern_active)
 	overworld.update_inventory.connect(func(inventory: Dictionary): self.latest_inventory = inventory)
 	overworld.update_gold.connect(func(gold: int): self.latest_gold_count = gold)
+	overworld.update_health.connect(func(health: int): self.latest_health = health)
 	var player_node: Player = overworld.get_node("Player")
 	player_node.backpack = latest_inventory
 	player_node.gold = latest_gold_count
+	player_node.health = latest_health
 	self.call_deferred("add_child", overworld)
 
 # Called when the node enters the scene tree for the first time.
