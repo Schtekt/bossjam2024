@@ -2,10 +2,17 @@ extends Node2D
 
 const overworld_scene = preload("res://Scenes/Levels/Overworld/Overworld.tscn")
 const tavern_scene = preload("res://Scenes/Levels/Tavern/Tavern.tscn")
+const game_over_scene = preload("res://Scenes/Levels/Game over/Game_Over.tscn")
 
 var latest_inventory: Dictionary = {}
 var latest_gold_count: int = 0
 var latest_health: int = Player.MAX_HEALTH
+
+func _on_game_end() -> void:
+	_clear_children()
+	var game_over_node = game_over_scene.instantiate()
+	self.call_deferred("add_child", game_over_node)
+
 
 func _clear_children() -> void:
 	for child in get_children():
@@ -37,6 +44,7 @@ func _set_overworld_active() -> void:
 	player_node.backpack = latest_inventory
 	player_node.gold = latest_gold_count
 	player_node.health = latest_health
+	player_node.player_dead.connect(_on_game_end)
 	self.call_deferred("add_child", overworld)
 
 # Called when the node enters the scene tree for the first time.

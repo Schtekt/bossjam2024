@@ -8,6 +8,7 @@ signal enemy_collision(enemy_node: Enemy, damage: int)
 signal item_pickup(item_node: Item_Base)
 signal dish_collide(order_base: Dish_Base)
 signal receive_reward(reward: int)
+signal player_dead()
 
 var backpack: Dictionary
 var held_dish: Dish_Base = null
@@ -71,3 +72,6 @@ func _update_health(new_health: int):
 	health = new_health
 	var health_bar_node: ProgressBar = get_node("HealthBar")
 	health_bar_node.value = health
+
+	if health <= 0:
+		player_dead.emit()
