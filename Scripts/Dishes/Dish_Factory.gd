@@ -12,6 +12,7 @@ static func create_dish(type: Dish_Base.Dish_Type) -> Dish_Base:
 		node.delivery_reward = 1
 	elif type == Dish_Base.Dish_Type.GLAZED_DONUT:
 		node = glazed_donut_scene.instantiate()
+		node.delivery_reward = 2
 
 	if node != null:
 		node.dish_type = type
