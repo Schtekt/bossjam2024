@@ -7,6 +7,7 @@ static func create_order(type: Dish_Base.Dish_Type) -> Sprite2D:
 
 	if dish != null:
 		var sprite_node = dish.get_node("Sprite2D")
+		sprite_node.owner = null
 		return sprite_node
 
 	return null
