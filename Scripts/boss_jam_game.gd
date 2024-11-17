@@ -13,6 +13,8 @@ func _on_game_end() -> void:
 	var game_over_node = game_over_scene.instantiate()
 	self.call_deferred("add_child", game_over_node)
 
+	game_over_node.set_score(latest_gold_count)
+
 
 func _clear_children() -> void:
 	for child in get_children():
