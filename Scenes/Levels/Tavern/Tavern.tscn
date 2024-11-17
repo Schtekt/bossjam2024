@@ -24,7 +24,7 @@ output = 0
 [sub_resource type="Resource" id="Resource_yfsno"]
 script = ExtResource("3_l4pr3")
 type = 0
-count = 2
+count = 3
 
 [sub_resource type="Resource" id="Resource_3om2m"]
 script = ExtResource("3_l4pr3")
