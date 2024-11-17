@@ -89,6 +89,10 @@ func _ready() -> void:
 		if child is Table:
 			var table: Table = child
 			table.dish_delivered.connect(player_node.receive_reward.emit)
+	var persistent_ui_node: Persistent_UI = get_node("Persistent_UI")
+	player_node.gold_updated.connect(persistent_ui_node.update_coins.emit)
+
+	persistent_ui_node.update_coins.emit(player_node.gold)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("make_food") and self.player_by_oven:

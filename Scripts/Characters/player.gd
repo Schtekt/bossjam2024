@@ -9,6 +9,7 @@ signal item_pickup(item_node: Item_Base)
 signal dish_collide(order_base: Dish_Base)
 signal receive_reward(reward: int)
 signal player_dead()
+signal gold_updated(gold_count: int)
 
 var backpack: Dictionary
 var held_dish: Dish_Base = null
@@ -67,6 +68,7 @@ func _on_dish_pickup(dish_node: Dish_Base) -> void:
 
 func _on_receive_reward(reward: int):
 	gold += reward
+	gold_updated.emit(gold)
 
 func _update_health(new_health: int):
 	health = new_health

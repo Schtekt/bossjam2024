@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://sn2kuwx3f20w"]
+[gd_scene load_steps=12 format=4 uid="uid://sn2kuwx3f20w"]
 
 [ext_resource type="Script" path="res://Scripts/levels/tavern.gd" id="1_di7db"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe_Base.gd" id="2_51a2c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5okr7i4d4igl" path="res://Scenes/Levels/Tavern/Table.tscn" id="4_xwf5r"]
 [ext_resource type="PackedScene" uid="uid://t086hxv1spkn" path="res://Scenes/Levels/Tavern/Exit.tscn" id="5_vnijb"]
 [ext_resource type="PackedScene" uid="uid://gj07no04fe5d" path="res://Scenes/Levels/Tavern/Oven.tscn" id="6_rgpjt"]
+[ext_resource type="PackedScene" uid="uid://ijdutdcewk2t" path="res://Scenes/UI/persistent_ui.tscn" id="9_ue8c3"]
 
 [sub_resource type="Resource" id="Resource_db2ad"]
 script = ExtResource("3_l4pr3")
@@ -58,3 +59,5 @@ tile_set = ExtResource("2_elll6")
 
 [node name="Oven" parent="." instance=ExtResource("6_rgpjt")]
 position = Vector2(203, -11)
+
+[node name="Persistent_UI" parent="." instance=ExtResource("9_ue8c3")]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://duglojjg21622"]
+[gd_scene load_steps=8 format=4 uid="uid://duglojjg21622"]
 
 [ext_resource type="Script" path="res://Scripts/levels/overworld.gd" id="1_6526m"]
 [ext_resource type="Texture2D" uid="uid://5ae7biupogu6" path="res://Assets/Tiny Town/Tilemap/tilemap_packed.png" id="2_fhb5b"]
 [ext_resource type="PackedScene" uid="uid://bycnbwmq8qj0d" path="res://Scenes/Levels/Overworld/Tavern_Door.tscn" id="3_whuju"]
 [ext_resource type="PackedScene" uid="uid://dwevwfecvppnb" path="res://Scenes/characters/Player.tscn" id="4_v06aq"]
+[ext_resource type="PackedScene" uid="uid://ijdutdcewk2t" path="res://Scenes/UI/persistent_ui.tscn" id="5_ok3nv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_78x6k"]
 texture = ExtResource("2_fhb5b")
@@ -320,3 +321,5 @@ position = Vector2(173, 117)
 
 [node name="Sp5" type="Marker2D" parent="Spawn points"]
 position = Vector2(217, 43)
+
+[node name="Persistent_UI" parent="." instance=ExtResource("5_ok3nv")]

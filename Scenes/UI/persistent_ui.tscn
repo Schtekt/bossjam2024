@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ijdutdcewk2t"]
+
+[ext_resource type="Script" path="res://Scripts/UI/persistent_ui.gd" id="1_00oyo"]
+[ext_resource type="Texture2D" uid="uid://bv561aysn1fpw" path="res://Assets/Tiny Town/Tiles/tile_0093.png" id="1_71ubf"]
+
+[node name="Persistent_UI" type="CanvasLayer"]
+script = ExtResource("1_00oyo")
+
+[node name="Coin_Count" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 10.0
+offset_right = 133.0
+offset_bottom = 33.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+texture = ExtResource("1_71ubf")

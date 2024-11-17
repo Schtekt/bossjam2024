@@ -66,6 +66,10 @@ func _ready() -> void:
 		self._spawn_random_item(spawn_points[sp_index])
 		spawn_points.remove_at(sp_index)
 
+	var persistent_ui_node: Persistent_UI = get_node("Persistent_UI")
+	var player_node: Player = self.get_node("Player")
+	persistent_ui_node.update_coins.emit(player_node.gold)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
