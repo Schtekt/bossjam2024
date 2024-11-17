@@ -4,9 +4,10 @@ class_name Tavern
 signal exit_tavern()
 signal make_food()
 signal update_inventory(inventory: Dictionary)
+signal update_gold(gold: int)
 
 var player_by_oven = false
-var dish_factory = preload("res://Scripts/Items/Dish_Factory.gd")
+var dish_factory = preload("res://Scripts/Dishes/Dish_Factory.gd")
 
 @export var cookbook: Array[Recipe_Base]
 
@@ -14,6 +15,7 @@ func _verify_and_exit_tavern(body: Node2D):
 	var player_node: Player = get_node("Player")
 	if body == player_node:
 		update_inventory.emit(player_node.backpack)
+		update_gold.emit(player_node.gold)
 		exit_tavern.emit()
 
 func _verify_and_set_player_by_oven(body: Node2D):
@@ -80,6 +82,13 @@ func _ready() -> void:
 	oven_node.body_exited.connect(_verify_and_set_player_exit_oven)
 
 	make_food.connect(_cook_first_possible_dish)
+
+	var player_node: Player = get_node("Player")
+
+	for child in get_children():
+		if child is Table:
+			var table: Table = child
+			table.dish_delivered.connect(player_node.receive_reward.emit)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("make_food") and self.player_by_oven:

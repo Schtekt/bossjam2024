@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name Table
+
 var chair_scene = preload("res://Scenes/Levels/Tavern/Chair.tscn")
 
 var chairs_at_table = 0
@@ -7,16 +9,16 @@ var chairs_at_table = 0
 var current_order: Array[Dish_Base.Dish_Type]
 
 signal dish_collide(dish: Dish_Base)
+signal dish_delivered(reward: int)
 
-func _attempt_delivery(dish: Dish_Base) -> bool:
+func _attempt_delivery(dish: Dish_Base) -> void:
 	for order in current_order:
 		if order == dish.dish_type:
 			var order_indicator_node: Order_Indicator = get_node("Order_Indicator")
 			if order_indicator_node.remove_order(dish.dish_type):
 				current_order.erase(order)
 				dish.queue_free()
-			return true
-	return false
+				dish_delivered.emit(dish.delivery_reward)
 
 func _create_left_chair() -> void:
 	var chair: Chair = chair_scene.instantiate()
