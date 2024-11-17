@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://sn2kuwx3f20w"]
+[gd_scene load_steps=16 format=4 uid="uid://sn2kuwx3f20w"]
 
 [ext_resource type="Script" path="res://Scripts/levels/tavern.gd" id="1_di7db"]
 [ext_resource type="Script" path="res://Scripts/Items/Recipe_Base.gd" id="2_51a2c"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://t086hxv1spkn" path="res://Scenes/Levels/Tavern/Exit.tscn" id="5_vnijb"]
 [ext_resource type="PackedScene" uid="uid://gj07no04fe5d" path="res://Scenes/Levels/Tavern/Oven.tscn" id="6_rgpjt"]
 [ext_resource type="PackedScene" uid="uid://ijdutdcewk2t" path="res://Scenes/UI/persistent_ui.tscn" id="9_ue8c3"]
+[ext_resource type="PackedScene" uid="uid://d15b4yrnhvx3u" path="res://Scenes/UI/Available_Orders.tscn" id="10_dmr1e"]
 
 [sub_resource type="Resource" id="Resource_rbtdm"]
 script = ExtResource("3_l4pr3")
@@ -76,3 +77,5 @@ tile_map_data = PackedByteArray("AAAIAAQAAAAkAA0AAAAIAAMAAAAiAA0AAAAAAAUAAAAjAAw
 tile_set = ExtResource("2_elll6")
 
 [node name="Persistent_UI" parent="." instance=ExtResource("9_ue8c3")]
+
+[node name="Available_Orders" parent="." instance=ExtResource("10_dmr1e")]
