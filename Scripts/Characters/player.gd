@@ -51,4 +51,6 @@ func _on_dish_pickup(dish_node: Dish_Base) -> void:
 	held_dish = dish_node
 	dish_node.call_deferred("reparent", self)
 	var sprite_node: Sprite2D = get_node("Sprite2D")
-	held_dish.position.y -= sprite_node.get_rect().size.y
+	var held_dish_sprite: Sprite2D = held_dish.get_node("Sprite2D")
+	held_dish.position.y = self.position.y - sprite_node.get_rect().size.y
+	held_dish.position.x = self.position.x + (sprite_node.get_rect().size.x / 2) - (held_dish_sprite.get_rect().size.x / 2) + 0.5
