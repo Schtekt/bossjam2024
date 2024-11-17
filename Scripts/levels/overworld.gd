@@ -16,6 +16,11 @@ func _spawn_enemy(pos: Vector2) -> void:
 	new_enemy.position = pos
 	var vert_or_hor: bool = randi() % 2
 	var reverse_dir = ((randi() % 2) - 0.5) * 2
+
+	var player_node: Player = get_node("Player")
+
+	new_enemy.speed_buff += player_node.gold * 10
+
 	new_enemy.set_direction(Vector2((1 if vert_or_hor else 0) * reverse_dir, (0 if vert_or_hor else 1) * reverse_dir))
 	new_enemy.enemy_dead.connect(_on_enemy_dead)
 	self.call_deferred("add_child", new_enemy)

@@ -322,4 +322,10 @@ position = Vector2(173, 117)
 [node name="Sp5" type="Marker2D" parent="Spawn points"]
 position = Vector2(217, 43)
 
+[node name="Sp6" type="Marker2D" parent="Spawn points"]
+position = Vector2(248, 147)
+
+[node name="Sp7" type="Marker2D" parent="Spawn points"]
+position = Vector2(-70, 76)
+
 [node name="Persistent_UI" parent="." instance=ExtResource("5_ok3nv")]
