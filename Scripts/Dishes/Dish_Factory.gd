@@ -1,11 +1,19 @@
 extends Node
 
-static var cream_scene: PackedScene = preload("res://Scenes/Dishes/Cream.tscn")
+class_name Dish_Factory
 
-static func create_item(type: Dish_Base.Dish_Type) -> Dish_Base:
+const cream_scene: PackedScene = preload("res://Scenes/Dishes/Cream.tscn")
+const glazed_donut_scene: PackedScene = preload("res://Scenes/Dishes/Glazed_Donut.tscn")
+
+static func create_dish(type: Dish_Base.Dish_Type) -> Dish_Base:
+	var node: Dish_Base = null
 	if type == Dish_Base.Dish_Type.CREAM:
-		var node: Dish_Base = cream_scene.instantiate()
-		node.dish_type = Dish_Base.Dish_Type.CREAM
+		node = cream_scene.instantiate()
 		node.delivery_reward = 1
-		return node
-	return null
+	elif type == Dish_Base.Dish_Type.GLAZED_DONUT:
+		node = glazed_donut_scene.instantiate()
+
+	if node != null:
+		node.dish_type = type
+	
+	return node

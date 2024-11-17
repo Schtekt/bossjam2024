@@ -7,7 +7,6 @@ signal update_inventory(inventory: Dictionary)
 signal update_gold(gold: int)
 
 var player_by_oven = false
-var dish_factory = preload("res://Scripts/Dishes/Dish_Factory.gd")
 
 @export var cookbook: Array[Recipe_Base]
 
@@ -31,7 +30,7 @@ func _verify_and_set_player_exit_oven(body: Node2D):
 		oven_node.change_oven_state(player_by_oven)
 
 func _spawn_dish(type: Dish_Base.Dish_Type) -> void:
-	var dish: Dish_Base = dish_factory.create_item(type)
+	var dish: Dish_Base = Dish_Factory.create_dish(type)
 	var player_node: Player = get_node("Player")
 	dish.position = player_node.position
 	call_deferred("add_child", dish)

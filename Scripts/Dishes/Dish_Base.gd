@@ -1,7 +1,7 @@
 extends Area2D
 class_name Dish_Base
 
-enum Dish_Type{CREAM}
+enum Dish_Type{CREAM, GLAZED_DONUT}
 var dish_type: Dish_Type
 var delivery_reward: int
 

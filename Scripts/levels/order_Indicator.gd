@@ -20,7 +20,7 @@ func visual_sort_orders():
 func add_order(type: Dish_Base.Dish_Type) -> void:
 	var order_node: Sprite2D = Order_Factory.create_order(type)
 	order_types.append(type)
-	self.call_deferred("add_child", order_node)
+	order_node.call_deferred("reparent", self)
 	self.call_deferred("visual_sort_orders")
 
 func remove_order(type: Dish_Base.Dish_Type) -> bool:
